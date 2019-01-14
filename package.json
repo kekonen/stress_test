@@ -1,0 +1,22 @@
+{
+  "name": "load_tests",
+  "version": "1.0.0",
+  "description": "Stress tests for BNP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kekonen/stress_test.git"
+  },
+  "author": "Daniil Naumetc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kekonen/stress_test/issues"
+  },
+  "homepage": "https://github.com/kekonen/stress_test#readme",
+  "devDependencies": {
+    "artillery": "^1.6.0-26"
+  }
+}
