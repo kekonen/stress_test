@@ -1,12 +1,21 @@
 config:
-  target: 'https://develop.businessnetwork.opuscapita.com'
-  phases:
-    - duration: 30
-      arrivalRate: 30
-  defaults:
-    headers:
-      Authorization: Bearer {{ $processEnvironment.BEARER }}
-      Content-Type: application/json
+  environments:
+    stage:
+      target: "https://stage.businessnetwork.opuscapita.com"
+      headers:
+        Authorization: Bearer {{ $processEnvironment.STAGE_BEARER }}
+        Content-Type: application/json
+      phases:
+        - duration: 30
+          arrivalRate: 30
+    develop:
+      target: "https://develop.businessnetwork.opuscapita.com"
+      headers:
+        Authorization: Bearer {{ $processEnvironment.DEVELOP_BEARER }}
+        Content-Type: application/json
+      phases:
+        - duration: 30
+          arrivalRate: 30
 scenarios:
   - flow:
     - get:
