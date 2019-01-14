@@ -1,0 +1,15 @@
+config:
+  target: 'https://develop.businessnetwork.opuscapita.com'
+  phases:
+    - duration: 30
+      arrivalRate: 30
+  defaults:
+    headers:
+      Authorization: Bearer {{ $processEnvironment.BEARER }}
+      Content-Type: application/json
+scenarios:
+  - flow:
+    - get:
+        url: "/user/api/users/current"
+    - get:
+        url: "/auth/userdata"
