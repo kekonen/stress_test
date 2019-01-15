@@ -1,6 +1,6 @@
 config:
   environments:
-    stage:
+    prod:
       target: "https://businessnetwork.opuscapita.com"
       phases:
         - duration: 30
