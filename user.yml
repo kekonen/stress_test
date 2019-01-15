@@ -1,24 +1,38 @@
 config:
   environments:
     stage:
-      target: "https://stage.businessnetwork.opuscapita.com"
-      headers:
-        Authorization: Bearer {{ $processEnvironment.STAGE_BEARER }}
-        Content-Type: application/json
+      target: "https://businessnetwork.opuscapita.com"
       phases:
         - duration: 30
           arrivalRate: 30
+      variables:
+        bearer:
+          - "{{ $processEnvironment.PROD_BEARER }}"
+    stage:
+      target: "https://stage.businessnetwork.opuscapita.com"
+      phases:
+        - duration: 30
+          arrivalRate: 30
+      variables:
+        bearer:
+          - "{{ $processEnvironment.STAGE_BEARER }}"
     develop:
       target: "https://develop.businessnetwork.opuscapita.com"
-      headers:
-        Authorization: Bearer {{ $processEnvironment.DEVELOP_BEARER }}
-        Content-Type: application/json
       phases:
         - duration: 30
           arrivalRate: 30
+      variables:
+        bearer:
+          - "{{ $processEnvironment.DEVELOP_BEARER }}"
 scenarios:
   - flow:
     - get:
         url: "/user/api/users/current"
+        headers:
+          Authorization: Bearer {{ bearer }}
+          Content-Type: application/json
     - get:
         url: "/auth/userdata"
+        headers:
+          Authorization: Bearer {{ bearer }}
+          Content-Type: application/json
